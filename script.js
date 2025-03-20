@@ -2,7 +2,7 @@
 
 To find the size of the divs is 640/num - this needs to be rounded to the 10th
 
-To change the number of divs alert for 'num' and have the function take 'num' and i be < num * num.
+To change the number of divs alert for 'size' and have the function take 'size' and i be < num * num.
 
 4096
 
@@ -37,3 +37,34 @@ function changeGridColor(e) {
     //   opacity : 0.25
     });
   }
+
+
+document.getElementById('apply').addEventListener("click", gridSize);
+
+
+function gridSize(){
+    let size = document.getElementById('size').value;
+    console.log(size)
+
+    const del = document.getElementById("container");
+    while (del.firstChild) {
+        del.removeChild(del.firstChild);
+    }
+
+    for (let i = 0; i < size * size; i++) {
+        const newDiv = document.createElement('div');
+        newDiv.classList.add("box");
+        newDiv.addEventListener('mouseover', changeGridColor);
+        newDiv.style.width = (640 / size) + 'px';
+        newDiv.style.height = (640 / size) + 'px';
+        document.getElementById('container').appendChild(newDiv);
+
+        // const boxes = document.querySelectorAll('.box');
+        // //  (640 / size) + 'px';
+        // // boxes.style.height = (640 / size) + 'px';
+        // document.querySelectorAll('.box').style.width = '20px'
+
+    }    
+
+}
+
